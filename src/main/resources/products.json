@@ -1,0 +1,147 @@
+[
+  {
+    "title": "LTD",
+    "price": 300.0,
+    "status": "AVAILABLE",
+    "category": "Electric Guitars",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+  {
+    "title": "ESP",
+    "price": 500.0,
+    "status": "AVAILABLE",
+    "category": "Electric Guitars",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+  {
+    "title": "LTD 1",
+    "price": 400.0,
+    "status": "AVAILABLE",
+    "category": "Electric Guitars",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+
+  {
+    "title": "Ukulele",
+    "price": 305.0,
+    "status": "AVAILABLE",
+    "category": "Acoustic Guitars",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+  {
+    "title": "Trembita",
+    "price": 1505.0,
+    "status": "AVAILABLE",
+    "category": "Acoustic Guitars",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+  {
+    "title": "Balalajka",
+    "price": 5.0,
+    "status": "AVAILABLE",
+    "category": "Acoustic Guitars",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+
+  {
+    "title": "Strings",
+    "price": 5.0,
+    "status": "AVAILABLE",
+    "category": "Accessories",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+  {
+    "title": "Cleaner",
+    "price": 20.0,
+    "status": "AVAILABLE",
+    "category": "Accessories",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+  {
+    "title": "Stand",
+    "price": 60.0,
+    "status": "AVAILABLE",
+    "category": "Accessories",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+  {
+    "title": "Book",
+    "price": 6.0,
+    "status": "AVAILABLE",
+    "category": "Accessories",
+    "shopId": "575c04f08e18f70addd0145b"
+  },
+
+  {
+    "title": "Ukraine",
+    "price": 50000.0,
+    "status": "AVAILABLE",
+    "category": "Crosscountry",
+    "shopId": "575c04f08e18f70addd0145a"
+  },
+  {
+    "title": "Bergamont",
+    "price": 2000.0,
+    "status": "AVAILABLE",
+    "category": "Crosscountry",
+    "shopId": "575c04f08e18f70addd0145a"
+  },
+  {
+    "title": "BMW",
+    "price": 400.0,
+    "status": "AVAILABLE",
+    "category": "Crosscountry",
+    "shopId": "575c04f08e18f70addd0145a"
+  },
+
+  {
+    "title": "Specialized",
+    "price": 5105.0,
+    "status": "AVAILABLE",
+    "category": "City Bike",
+    "shopId": "575c04f08e18f70addd0145a"
+  },
+  {
+    "title": "Bergamont",
+    "price": 2505.0,
+    "status": "AVAILABLE",
+    "category": "City Bike",
+    "shopId": "575c04f08e18f70addd0145a"
+  },
+  {
+    "title": "Auchan-bike",
+    "price": 405.0,
+    "status": "AVAILABLE",
+    "category": "City Bike",
+    "shopId": "575c04f08e18f70addd0145a"
+  },
+
+  {
+    "title": "Gloves",
+    "price": 5.0,
+    "status": "AVAILABLE",
+    "category": "Bike Accessories",
+    "shopId": "575c04f08e18f70addd0145a"
+  },
+  {
+    "title": "Pump",
+    "price": 20.0,
+    "status": "AVAILABLE",
+    "category": "Bike Accessories",
+    "shopId": "575c04f08e18f70addd0145a"
+  },
+  {
+    "title": "Stand",
+    "price": 60.0,
+    "status": "AVAILABLE",
+    "category": "Bike Accessories",
+    "shopId": "575c04f08e18f70addd0145a"
+  },
+  {
+    "title": "Book",
+    "price": 6.0,
+    "status": "AVAILABLE",
+    "category": "Bike Accessories",
+    "shopId": "575c04f08e18f70addd0145a"
+  }
+]

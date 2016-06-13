@@ -1,6 +1,6 @@
-import models.Product;
-import models.ProductStatus;
-import models.Shop;
+import model.Product;
+import model.ProductStatus;
+import model.Shop;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class ShopThread implements Runnable {
             // #4 Increase price on 20% for available products
             List<Product> availableProducts = shop.getAvailableProducts();
             for (Product product : availableProducts ){
-                shop.updateProductPrice(product,((product.getPrice())* 1.2));
+                shop.updateProductPrice(product,((product.getPrice())* 1.2f));
             }
             System.out.println("End of " + shop.toString());
         } catch (Exception e) {

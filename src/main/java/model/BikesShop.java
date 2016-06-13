@@ -1,4 +1,4 @@
-package models;
+package model;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
@@ -27,7 +27,7 @@ public class BikesShop extends Shop {
             DBCollection collection = AbstractDao.getInstance().getDB().getCollection("shops");
             BasicDBObject whereQuery = new BasicDBObject();
 
-            whereQuery.put("_id", shopId);
+            whereQuery.put(ID, shopId);
 
             DBObject object = collection.findOne(whereQuery);
             instance = BikesShop.parseShop(object);
@@ -35,13 +35,13 @@ public class BikesShop extends Shop {
         return instance;
     }
     public static BikesShop parseShop(DBObject object) {
-        String shopId = (String) object.get("_id");
-        String shopName = (String) object.get("name");
+        String shopId = (String) object.get(ID);
+        String shopName = (String) object.get(NAME);
         return new BikesShop(shopId, shopName);
     }
 
     public List<Product> getProducts() throws UnknownHostException {
-        return Product.getProducts("shopId", String.valueOf(shopId));
+        return Product.getProducts(SHOP_ID, String.valueOf(shopId));
     }
 
     @Override

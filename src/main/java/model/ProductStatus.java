@@ -1,4 +1,4 @@
-package models;
+package model;
 
 /**
  * @autor A_Nakonechnyi

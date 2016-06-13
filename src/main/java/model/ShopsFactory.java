@@ -1,4 +1,4 @@
-package models;
+package model;
 
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
@@ -27,7 +27,7 @@ public class ShopsFactory {
 
 
     public static List<Shop> getShops() throws UnknownHostException {
-        List<Shop> result = new ArrayList<Shop>();
+        List<Shop> result = new ArrayList<>();
         DBCollection collection = AbstractDao.getInstance().getDB().getCollection("shops");
 
         DBCursor cursor = collection.find();

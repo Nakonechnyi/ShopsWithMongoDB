@@ -1,5 +1,5 @@
-import models.Shop;
-import models.ShopsFactory;
+import model.Shop;
+import model.ShopsFactory;
 
 import java.net.UnknownHostException;
 import java.util.List;

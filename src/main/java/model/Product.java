@@ -1,4 +1,4 @@
-package models;
+package model;
 
 import com.google.gson.Gson;
 import com.mongodb.*;
@@ -15,6 +15,13 @@ import java.util.*;
  */
 public class Product {
 
+    public final static String PRODUCTS = "products";
+    public final static String CATEGORY = "category";
+    public final static String TITLE = "title";
+    public final static String STATUS = "status";
+    public final static String PRICE = "price";
+    public final static String SHOP_ID = "shopId";
+    public final static String ID = "_id";
     private ObjectId _id;
     private String title;
     private double price;
@@ -31,8 +38,8 @@ public class Product {
     }
 
     public static List<Product> getProducts(String criterionName, String criterionValue) throws UnknownHostException {
-        List<Product> result = new ArrayList<Product>();
-        DBCollection collection = AbstractDao.getInstance().getDB().getCollection("products");
+        List<Product> result = new ArrayList<>();
+        DBCollection collection = AbstractDao.getInstance().getDB().getCollection(PRODUCTS);
         BasicDBObject query = new BasicDBObject();
 
         query.put(criterionName, criterionValue);
@@ -46,12 +53,12 @@ public class Product {
 
     private static Product parseProduct(DBObject next) {
         /*Product product = (new Gson().fromJson( next.toString(), Product.class)); incorrect parse _id */
-        ObjectId _id = (ObjectId) next.get("_id");
-        String title = (String) next.get("title");
-        double price = (Double)next.get("price");
-        ProductStatus status = ProductStatus.valueOf((String)next.get("status"));
-        String category = (String) next.get("category");
-        String id = (String) next.get("shopId");
+        ObjectId _id = (ObjectId) next.get(ID);
+        String title = (String) next.get(TITLE);
+        double price = (Double)next.get(PRICE);
+        ProductStatus status = ProductStatus.valueOf((String)next.get(STATUS));
+        String category = (String) next.get(CATEGORY);
+        String id = (String) next.get(SHOP_ID);
         Product product = new Product(title, price, status, category, id);
         product._id = _id;
         return product;
@@ -61,8 +68,8 @@ public class Product {
         Product product = new Product( title, price, status,category,shopId);
         Gson gson = new Gson();
         BasicDBObject productDBObj = (BasicDBObject) JSON.parse(gson.toJson(product));
-        AbstractDao.getInstance().saveToDB("products", productDBObj);
-        product._id = (ObjectId) productDBObj.get("_id");
+        AbstractDao.getInstance().saveToDB(PRODUCTS, productDBObj);
+        product._id = (ObjectId) productDBObj.get(ID);
         return product;
     }
 
@@ -70,10 +77,10 @@ public class Product {
         DBCollection collection = AbstractDao.getInstance().getDB().getCollection("products");
 
         BasicDBObject query = new BasicDBObject();
-        query.append("_id", _id);
+        query.append(ID, _id);
 
         BasicDBObject update = new BasicDBObject();
-        update.append("status", status.toString());
+        update.append(STATUS, status.toString());
 
         BasicDBObject updateObj = new BasicDBObject();
         updateObj.append("$set", update);
@@ -88,10 +95,10 @@ public class Product {
         DBCollection collection = AbstractDao.getInstance().getDB().getCollection("products");
 
         BasicDBObject query = new BasicDBObject();
-        query.append("_id", _id);
+        query.append(ID, _id);
 
         BasicDBObject update = new BasicDBObject();
-        update.append("price", price);
+        update.append(PRICE, price);
 
         BasicDBObject updateObj = new BasicDBObject();
         updateObj.append("$set", update);
@@ -111,21 +118,21 @@ public class Product {
     }
 
     public static List<String> getCategories(String shopId) throws UnknownHostException {
-        Set<String> result = new HashSet<String>();
-        DBCollection collection = AbstractDao.getInstance().getDB().getCollection("products");
+        Set<String> result = new HashSet<>();
+        DBCollection collection = AbstractDao.getInstance().getDB().getCollection(PRODUCTS);
 
         BasicDBObject query = new BasicDBObject();
-        query.append("shopId", shopId);
+        query.append(SHOP_ID, shopId);
 
         BasicDBObject fields = new BasicDBObject();
-        fields.append("category", 1);
+        fields.append(CATEGORY, 1);
 
         DBCursor cursor = collection.find(query,fields);
 
         while(cursor.hasNext()) {
-            result.add((String) cursor.next().get("category"));
+            result.add((String) cursor.next().get(CATEGORY));
         }
-        return new ArrayList<String>(result);
+        return new ArrayList<>(result);
     }
 
     public double getPrice() {

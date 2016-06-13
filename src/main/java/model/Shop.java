@@ -1,4 +1,4 @@
-package models;
+package model;
 
 import com.mongodb.DBObject;
 
@@ -11,16 +11,22 @@ import java.util.List;
  */
 public abstract class Shop {
 
+    public final static String CATEGORY = "category";
+    public final static String SHOP_ID = "shopId";
+    public final static String STATUS = "status";
+    public final static String NAME = "name";
+    public final static String ID = "_id";
+
     protected abstract String getId();
 
     protected abstract String getName();
 
     public List<Product> getProducts() throws UnknownHostException {
-        return Product.getProducts("shopId", String.valueOf(getId()));
+        return Product.getProducts(SHOP_ID, String.valueOf(getId()));
     }
 
     public List<Product> getProducts(String category) throws UnknownHostException {
-        return Product.getProducts("category", category);
+        return Product.getProducts(CATEGORY, category);
     }
 
     public Product addProduct(String title, double price, ProductStatus status, String category) throws Exception {
@@ -40,7 +46,7 @@ public abstract class Shop {
     }
 
     public List<Product> getAvailableProducts() throws UnknownHostException {
-        return Product.getProducts("status", "AVAILABLE");
+        return Product.getProducts(STATUS, ProductStatus.AVAILABLE.toString());
     }
 
     public String toString() {
@@ -49,8 +55,8 @@ public abstract class Shop {
     }
 
     public static Shop parseShop(DBObject object) throws UnknownHostException {
-        String shopId = (String) object.get("_id");
-        String shopName = (String) object.get("name");
+        String shopId = (String) object.get(ID);
+        String shopName = (String) object.get(NAME);
         if (shopName.equals("Guitars")){
             return GuitarShop.getInstance(shopId);
         } else if (shopName.equals("Bikes")) {

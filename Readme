@@ -1,0 +1,24 @@
+Source for MongoDB:
+Tutorials:
+- http://www.tutorialspoint.com/mongodb/
+- https://www.youtube.com/watch?v=W-WihPoEbR4
+  https://github.com/sedouard/mongodb-mva
+DAO:
+- https://kvijayasagar.wordpress.com/2010/09/30/writing-a-dao-using-nosql-database-mongodb/
+
+Installing:
+  1. Download MongoDB: https://docs.mongodb.com/manual/installation/
+  2.    (mkdir /data/db)
+  3. Run the mongodb database process:
+        mongod
+
+Create DB example in json for import in parallel cmd:
+cd C:\Program Files\MongoDB\Server\3.2\bin
+mongoimport C:\data\db\shops.json --jsonArray --collection shops
+mongoimport C:\data\db\products.json --jsonArray --collection products
+
+Gson converter: https://github.com/google/gson
+
+
+
+  https://github.com/sedouard/mongodb-mva

@@ -6,13 +6,13 @@ import java.net.UnknownHostException;
 
 public class AbstractDao {
 
-    private Mongo connection = null;
+    private MongoClient connection = null;
     private DB db = null;
 
     private static AbstractDao mongoDao = null;
 
     private AbstractDao() throws UnknownHostException {
-            connection= new Mongo("localhost" ,27017);
+            connection= new MongoClient("localhost" ,27017);
         db = connection.getDB("test");
     }
 

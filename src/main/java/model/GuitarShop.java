@@ -23,17 +23,25 @@ public class GuitarShop extends Shop {
     }
 
     public static GuitarShop getInstance(String shopId) throws UnknownHostException {
-        if (instance == null) {
-            DBCollection collection = AbstractDao.getInstance().getDB().getCollection("shops");
-            BasicDBObject whereQuery = new BasicDBObject();
+        GuitarShop localInstance = instance;
+        if (localInstance == null) {
+            synchronized (GuitarShop.class) {
+                localInstance = instance;
+                if (localInstance == null) {
 
-            whereQuery.put(ID, shopId);
+                    DBCollection collection = AbstractDao.getInstance().getDB().getCollection("shops");
+                    BasicDBObject whereQuery = new BasicDBObject();
 
-            DBObject object = collection.findOne(whereQuery);
-            instance = GuitarShop.parseShop(object);
+                    whereQuery.put(ID, shopId);
+
+                    DBObject object = collection.findOne(whereQuery);
+                    instance = localInstance = GuitarShop.parseShop(object);
+                }
+            }
         }
-        return instance;
+        return localInstance;
     }
+    
     public static GuitarShop parseShop(DBObject object) {
         String shopId = (String) object.get(ID);
         String shopName = (String) object.get(NAME);

@@ -15,7 +15,7 @@ import java.util.List;
 public class BikesShop extends Shop {
     private final String shopId;
     private final String name;
-    private static BikesShop instance;
+    private static volatile BikesShop instance;
 
     private BikesShop(String shopId, String name){
         this.shopId = shopId;
@@ -23,17 +23,25 @@ public class BikesShop extends Shop {
     }
 
     public static BikesShop getInstance(String shopId) throws UnknownHostException {
-        if (instance == null) {
-            DBCollection collection = AbstractDao.getInstance().getDB().getCollection("shops");
-            BasicDBObject whereQuery = new BasicDBObject();
+        BikesShop localInstance = instance;
+            if (localInstance == null) {
+                synchronized (BikesShop.class) {
+                    localInstance = instance;
+                    if (localInstance == null) {
 
-            whereQuery.put(ID, shopId);
+                        DBCollection collection = AbstractDao.getInstance().getDB().getCollection("shops");
+                        BasicDBObject whereQuery = new BasicDBObject();
 
-            DBObject object = collection.findOne(whereQuery);
-            instance = BikesShop.parseShop(object);
-        }
-        return instance;
+                        whereQuery.put(ID, shopId);
+
+                        DBObject object = collection.findOne(whereQuery);
+                        instance = localInstance = BikesShop.parseShop(object);
+                    }
+                }
+            }
+        return localInstance;
     }
+
     public static BikesShop parseShop(DBObject object) {
         String shopId = (String) object.get(ID);
         String shopName = (String) object.get(NAME);

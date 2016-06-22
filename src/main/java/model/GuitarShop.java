@@ -15,7 +15,7 @@ import java.util.List;
 public class GuitarShop extends Shop {
     private final String shopId;
     private final String name;
-    private static GuitarShop instance;
+    private static volatile GuitarShop instance;
 
     private GuitarShop(String shopId, String name){
         this.shopId = shopId;
@@ -41,7 +41,7 @@ public class GuitarShop extends Shop {
         }
         return localInstance;
     }
-    
+
     public static GuitarShop parseShop(DBObject object) {
         String shopId = (String) object.get(ID);
         String shopName = (String) object.get(NAME);
